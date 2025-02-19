@@ -1,3 +1,5 @@
+import tsconfigPaths from 'vite-tsconfig-paths';
+import path from "path"
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from 'tailwindcss'
@@ -5,10 +7,10 @@ import tailwindcss from 'tailwindcss'
 // https://vite.dev/config/
 export default defineConfig({
 	base: '/',
-	plugins: [react()],
+	plugins: [react(), tsconfigPaths()],
 	resolve: {
 		alias: {
-			'@': '/src'
+			"@/*": path.resolve(__dirname, "src/*"),
 		}
 	},
 	css: {
