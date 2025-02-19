@@ -9,4 +9,5 @@ services:
       - "3000:3000"
     volumes:
       - ./back-office-client:/app:rw
-      - /app/node_modules
+      - ./back-office-client/node_modules:/app/node_modules
+    user: "${UID}:${GID}"
