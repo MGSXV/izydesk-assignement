@@ -1,9 +1,4 @@
-import { useEffect } from "react"
-
 const Authentication = () => {
-	useEffect(() => {
-		console.log('Authentication mounted')
-	}, [])
 
 	return (
 		<div className="bg-red-600">
