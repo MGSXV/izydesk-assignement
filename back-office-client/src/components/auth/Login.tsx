@@ -16,7 +16,6 @@ const LOGIN_ENDPOINT = "/api/auth/login"
 
 const USERNAME_REGEX = /^[A-Za-z0-9]+$/i
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_#@$%]).+$/
-// const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_#@$%]).+$/
 
 interface ILogin {
 	username: string
@@ -78,14 +77,15 @@ const Login = ({ toast }: { toast: any }) => {
 						<div className="space-y-1">
 							<Label htmlFor="username">Username</Label>
 							<Input id="username" disabled={isLoading} placeholder="username..."
+								value={'testuser'}
 								{...register('username', { required: true, minLength: 4, maxLength: 20, pattern: USERNAME_REGEX  })}
 								aria-invalid={errors.username ? true : false } />
 						</div>
 						<div className="space-y-1">
 							<Label htmlFor="password">Password</Label>
 							<Input id="password" type="password" disabled={isLoading} placeholder="password..."
-								{...register('password', { required: true })}
-								// {...register('password', { required: true, minLength: 8, pattern: PASSWORD_REGEX })}
+								value={'Test-2015'}
+								{...register('password', { required: true, minLength: 8, pattern: PASSWORD_REGEX })}
 								aria-invalid={errors.password ? true : false } />
 						</div>
 					</CardContent>
