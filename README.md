@@ -14,9 +14,18 @@ some desciption here
 - ShadCN
 
 ### Backend
+- Php 8.2
+- Symfony 6
+- Nginx
+- PostgrSQL
+- PgAdmin
 
 ### Infrastructure
 - Docker
 - Docker compose
 
 ## How to run
+
+### How to view database
+
+## Areas of improvement
