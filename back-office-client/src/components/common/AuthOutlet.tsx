@@ -13,7 +13,7 @@ const AuthOutlet = ({ children }: { children: React.ReactNode }) => {
 
 	useEffect(() => {
 
-		axios.get("/category").then((res: any) => {
+		axios.get("/api/categories").then((res: any) => {
 			if (res && res.data && res.status && res.status === 200) {
 				setCategories([...res.data])
 			}
