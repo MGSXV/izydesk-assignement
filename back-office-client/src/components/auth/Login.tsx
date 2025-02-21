@@ -12,10 +12,11 @@ import { useAuth } from "@/hooks"
 import logo from "@/assets/logo-max.svg"
 import { useLocation, useNavigate } from "react-router-dom"
 
-const LOGIN_ENDPOINT = "/auth/local/signin"
+const LOGIN_ENDPOINT = "/api/auth/login"
 
 const USERNAME_REGEX = /^[A-Za-z0-9]+$/i
 const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_#@$%]).+$/
+// const PASSWORD_REGEX = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[-_#@$%]).+$/
 
 interface ILogin {
 	username: string
@@ -41,17 +42,17 @@ const Login = ({ toast }: { toast: any }) => {
 			headers: { 'Content-Type': 'application/json' },
 			withCredentials: true
 		}).then((response) => {
-			handleSetUser(response.data.message as IUser)
+			handleSetUser(response.data as IUser)
 			navigate(from, { replace: true })
 			toast({
 				title: "success",
 				description: "login successful",
-				// status: "success"
+				variant: "success"
 			})
 		}).catch((error) => {
 			toast({
 				title: "Error",
-				description: error?.response?.data || 'An error occurred',
+				description: error?.response?.data?.error || 'An error occurred',
 				variant: "destructive",
 			})
 		}).finally(() => {
@@ -83,7 +84,8 @@ const Login = ({ toast }: { toast: any }) => {
 						<div className="space-y-1">
 							<Label htmlFor="password">Password</Label>
 							<Input id="password" type="password" disabled={isLoading} placeholder="password..."
-								{...register('password', { required: true, minLength: 8, pattern: PASSWORD_REGEX })}
+								{...register('password', { required: true })}
+								// {...register('password', { required: true, minLength: 8, pattern: PASSWORD_REGEX })}
 								aria-invalid={errors.password ? true : false } />
 						</div>
 					</CardContent>

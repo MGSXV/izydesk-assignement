@@ -9,7 +9,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
 	useEffect(() => {
 		const stored_user = localStorage.getItem('user')
-		if (stored_user)
+		if (stored_user && stored_user !== 'undefined')
 			setUser(JSON.parse(stored_user))
 		setIsLoading(false)
 	}, [])
