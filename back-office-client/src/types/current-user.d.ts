@@ -1,6 +1,6 @@
 export interface IUser {
 	token: string
-	userr: {
+	user: {
 		id: number
 		username: string
 		roles: string[]
