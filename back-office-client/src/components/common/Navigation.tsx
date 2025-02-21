@@ -62,22 +62,6 @@ export const Navbar = () => {
 						</Sheet>
 					</span>
 
-					{/* desktop */}
-					{/* <nav className="hidden md:flex gap-2">
-						{routeList.map((route: RouteProps, i) => (
-							<a
-								rel="noreferrer noopener"
-								href={route.href}
-								key={i}
-								className={`text-[17px] ${buttonVariants({
-									variant: "ghost",
-								})}`}
-							>
-								{route.label}
-							</a>
-						))}
-					</nav> */}
-
 					<div className="hidden md:flex gap-2">
 						<a rel="noreferrer noopener" href="https://github.com/MGSXV" target="_blank"
 							className={`border ${buttonVariants({ variant: "secondary" })}`} >
