@@ -1,8 +1,9 @@
+import { useAuth } from "@/hooks"
 import { Navigate, Outlet, useLocation } from "react-router-dom"
 
 const RequireAuth = () => {
 
-	const user = null // TODO: Get user from context with custom hook (useAuth)
+	const { user } = useAuth()
 	const location = useLocation()
 	if (!user && location.pathname !== '/auth') {
 		return <Navigate to="/auth" />
