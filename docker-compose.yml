@@ -43,6 +43,7 @@ services:
 
   database:
     image: postgres:${POSTGRES_VERSION}-alpine
+    container_name: izydesk-database
     env_file:
       - .env
     environment:
@@ -58,6 +59,7 @@ services:
 
   pgadmin:
     image: dpage/pgadmin4:latest
+    container_name: izydesk-pgadmin
     env_file:
       - .env
     environment:
