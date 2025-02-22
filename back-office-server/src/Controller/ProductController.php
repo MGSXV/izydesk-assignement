@@ -107,7 +107,16 @@ class ProductController extends AbstractController
 
         $entityManager->flush();
 
-        return $this->json(['message' => 'Product updated successfully']);
+		return $this->json([
+			'message' => 'Product updated successfully',
+			'product' => [
+				'id' => $product->getId(),
+				'name' => $product->getName(),
+				'description' => $product->getDescription(),
+				'price' => $product->getPrice(),
+				'category' => $product->getCategory() ? $product->getCategory()->getId() : null
+			]
+		]);
     }
 
     #[Route('/{id}', name: 'api_products_delete', methods: ['DELETE'])]
