@@ -103,4 +103,19 @@ class CategoryController extends AbstractController
 
         return $this->json(['message' => 'Category deleted successfully']);
     }
+
+	#[Route('/{id}/products', name: 'api_category_products', methods: ['GET'])]
+	public function getCategoryProducts(Category $category): JsonResponse
+	{
+		$products = $category->getProducts();
+
+		$data = array_map(fn($product) => [
+			'id' => $product->getId(),
+			'name' => $product->getName(),
+			'description' => $product->getDescription(),
+			'price' => $product->getPrice(),
+		], $products->toArray());
+
+		return $this->json($data);
+	}
 }

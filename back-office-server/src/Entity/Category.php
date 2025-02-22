@@ -3,12 +3,22 @@
 namespace App\Entity;
 
 use App\Repository\CategoryRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategoryRepository::class)]
 class Category
 {
+	#[ORM\OneToMany(mappedBy: 'category', targetEntity: Product::class, cascade: ['persist', 'remove'])]
+	private Collection $products;
+
+	public function __construct()
+	{
+		$this->products = new ArrayCollection();
+	}
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
@@ -63,4 +73,9 @@ class Category
 
         return $this;
     }
+
+	public function getProducts(): Collection
+	{
+		return $this->products;
+	}
 }
