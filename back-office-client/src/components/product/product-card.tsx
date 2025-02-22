@@ -25,7 +25,7 @@ export const ProductCard = ({ product }: { product: IProduct }) => {
 
 			<PriceFormat_Basic
 				prefix="$"
-				value={98.96}
+				value={product.price}
 				className="text-2xl font-semibold"
 			/>
 
