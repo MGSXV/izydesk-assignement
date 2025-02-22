@@ -9,8 +9,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\Routing\Annotation\Route;
-use Lexik\Bundle\JWTAuthenticationBundle\Services\JWTTokenManagerInterface;
-use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Finder\Exception\AccessDeniedException;
+use Symfony\Component\Security\Core\Authentication\Token\Storage\TokenStorageInterface;
 
 #[Route('/api/auth')]
 class AuthController extends AbstractController
@@ -77,4 +77,50 @@ class AuthController extends AbstractController
             ]
         ]);
     }
+
+	#[Route('/logout', name: 'api_auth_logout', methods: ['POST'])]
+	public function logout(
+		Request $request,
+		TokenStorageInterface $tokenStorage,
+		EntityManagerInterface $entityManager
+	): JsonResponse {
+		try {
+			/** @var User $user */
+			$user = $this->getUser();
+			
+			if (!$user) {
+				throw new AccessDeniedException('Not authenticated');
+			}
+
+			// Extract token from Authorization header
+			$authHeader = $request->headers->get('Authorization');
+			if (!$authHeader) {
+				throw new AccessDeniedException('No authorization token provided');
+			}
+
+			$token = str_replace('Bearer ', '', $authHeader);
+
+			$entityManager->persist($user);
+			$entityManager->flush();
+
+			$tokenStorage->setToken(null);
+
+			return $this->json([
+				'message' => 'Logged out successfully',
+				'user' => [
+					'id' => $user->getId(),
+					'username' => $user->getUsername()
+				]
+			]);
+
+		} catch (AccessDeniedException $e) {
+			return $this->json([
+				'error' => $e->getMessage()
+			], 401);
+		} catch (\Exception $e) {
+			return $this->json([
+				'error' => 'An error occurred during logout'
+			], 500);
+		}
+	}
 }
