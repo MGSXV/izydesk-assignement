@@ -15,8 +15,6 @@ export const NavCategories = ({ categories }: { categories: ICategory[] }) => {
 	const [isDeletDialogOpen, setIsDeleteDialogOpen] = useState(false)
 	const handleOpen = () => setIsAddDialogOpen(!isAddDialogOpen)
 
-	console.log('---->', categories)
-
 	const selectedCategoryId = useRef("")
 	const selectedCategory = useRef<ICategory | null >(null)
 
