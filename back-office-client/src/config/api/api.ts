@@ -1,14 +1,38 @@
 import axios from "axios";
 import { API_URL } from "./url";
+import { useEffect } from "react";
+import { useAuth } from "@/hooks";
 
 export default axios.create({
     baseURL: API_URL,
-})
+});
 
-export const axios_private = axios.create({
+const axios_private = axios.create({
     baseURL: API_URL,
     headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
     },
     withCredentials: true,
-})
+});
+
+export const useAxiosPrivate = () => {
+    const { user } = useAuth();
+
+    useEffect(() => {
+        const requestInterceptor = axios_private.interceptors.request.use(
+            (config) => {
+                if (user && user.token) {
+                    config.headers.Authorization = `Bearer ${user.token}`;
+                }
+                return config;
+            },
+            (error) => Promise.reject(error)
+        );
+
+        return () => {
+            axios_private.interceptors.request.eject(requestInterceptor);
+        };
+    }, [user]);
+
+    return axios_private;
+};
