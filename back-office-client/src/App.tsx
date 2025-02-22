@@ -4,24 +4,28 @@ import { Layout, LayoutAuth, NotFound, RequireAuth } from '@/components/common'
 import { Authentication } from '@/components/auth'
 import { Dashboard } from '@/components/dashboard'
 import { ProductsCards } from '@/components/category'
+import { ProductProvider } from './context'
 
 function App() {
 
 	return (
-		<Routes>
-			<Route element={<Layout />}>
-				{/* Public routes */}
-				<Route path="/auth" element={<Authentication />} />
-				{/* Private routes */}
-				<Route element={<RequireAuth />}>
-					<Route element={<LayoutAuth />}>
-						<Route path='/' element={<Dashboard />} />
-						<Route path='/category/:id' element={<ProductsCards />} />
-						<Route path='/*' element={<NotFound />} />
-					</Route>
-				</Route	>
-			</Route> 
-		</Routes>
+		<ProductProvider>
+			<Routes>
+				<Route element={<Layout />}>
+					{/* Public routes */}
+					<Route path="/auth" element={<Authentication />} />
+					{/* Private routes */}
+					<Route element={<RequireAuth />}>
+						<Route element={<LayoutAuth />}>
+							<Route path='/' element={<Dashboard />} />
+							<Route path='/category/:id' element={<ProductsCards />} />
+							{/* <Route path='/product/:id' element={<ProductsCards />} /> */}
+							<Route path='/*' element={<NotFound />} />
+						</Route>
+					</Route	>
+				</Route> 
+			</Routes>
+		</ProductProvider>
 	)
 }
 
