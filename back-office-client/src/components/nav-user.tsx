@@ -18,7 +18,7 @@ import { IUser } from "@/types"
 import { useAuth } from "@/hooks"
 import { useAxiosPrivate } from "@/config/api"
 
-const LOGOUT_ENDPOINT = '/logout'
+const LOGOUT_ENDPOINT = '/api/auth/logout'
 
 export function NavUser({ user }: {	user: IUser | null }) {
 	const { isMobile } = useSidebar()
