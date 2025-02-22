@@ -16,13 +16,14 @@ import {
 } from "@/components/ui/sidebar"
 import { IUser } from "@/types"
 import { useAuth } from "@/hooks"
-import { axios_private } from "@/config/api"
+import { useAxiosPrivate } from "@/config/api"
 
 const LOGOUT_ENDPOINT = '/logout'
 
 export function NavUser({ user }: {	user: IUser | null }) {
 	const { isMobile } = useSidebar()
 	const { logout } = useAuth()
+	const axios_private = useAxiosPrivate()
 
 	const avatar_fallback = `${user?.user?.username.charAt(0)}${user?.user?.username.charAt(1)}`.toUpperCase()
 
