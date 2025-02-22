@@ -34,9 +34,7 @@ export const EditProduct = ({ isOpen, onOpenChange, product }:
 			headers: { "Content-Type": "application/json" },
 			withCredentials: true
 		}).then((response: any) => {
-			console.log(response.data, "sds")
 			if (response.status === 200) {
-				console.log(response.data)
 				const updated = products.filter(product => product.id !== response.data.product.id)
 				setProducts([...updated, response.data.product])
 			}
@@ -47,7 +45,6 @@ export const EditProduct = ({ isOpen, onOpenChange, product }:
 			})
 			onOpenChange(false)
 		}).catch(error => {
-			console.log(error)
 			toast({
 				title: "Error",
 				description: error?.message || 'An error occurred',
