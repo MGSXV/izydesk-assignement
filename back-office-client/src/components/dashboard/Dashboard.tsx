@@ -1,5 +1,5 @@
-// import { AddDepotDialog, DepotCards } from "@/components/depot";
 import { Fragment, useState } from "react";
+import { AddCategory, CategoryCards } from "@/components/category";
 
 const Dashboard = () => {
 
@@ -12,9 +12,9 @@ const Dashboard = () => {
 				<h2 className="text-3xl font-bold tracking-tight">
 					Dashboard
 				</h2>
-				{/* <DepotCards onclick={handleOpen} /> */}
+				<CategoryCards onclick={handleOpen} />
 			</div>
-			{/* <AddDepotDialog isOpen={isOpen} onOpenChange={handleOpen} /> */}
+			<AddCategory isOpen={isOpen} onOpenChange={handleOpen} />
 		</Fragment>
 	);
 }
