@@ -71,8 +71,17 @@ class ProductController extends AbstractController
         $entityManager->persist($product);
         $entityManager->flush();
 
-        return $this->json(['message' => 'Product created successfully', 'id' => $product->getId()], 201);
-    }
+		return $this->json([
+			'message' => 'Product created successfully',
+			'product' => [
+				'id' => $product->getId(),
+				'name' => $product->getName(),
+				'description' => $product->getDescription(),
+				'price' => $product->getPrice(),
+				'category' => $product->getCategory() ? $product->getCategory()->getId() : null
+			]
+		], 201);
+	}
 
     #[Route('/{id}', name: 'api_products_update', methods: ['PUT', 'PATCH'])]
     public function update(Request $request, Product $product, EntityManagerInterface $entityManager): JsonResponse
