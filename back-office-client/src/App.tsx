@@ -3,6 +3,7 @@ import './App.css'
 import { Layout, LayoutAuth, NotFound, RequireAuth } from '@/components/common'
 import { Authentication } from '@/components/auth'
 import { Dashboard } from '@/components/dashboard'
+import { ProductsCards } from '@/components/category'
 
 function App() {
 
@@ -15,7 +16,7 @@ function App() {
 				<Route element={<RequireAuth />}>
 					<Route element={<LayoutAuth />}>
 						<Route path='/' element={<Dashboard />} />
-						<Route path='/category/:id' element={<Dashboard />} />
+						<Route path='/category/:id' element={<ProductsCards />} />
 						<Route path='/*' element={<NotFound />} />
 					</Route>
 				</Route	>
