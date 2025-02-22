@@ -15,6 +15,7 @@ function App() {
 				<Route element={<RequireAuth />}>
 					<Route element={<LayoutAuth />}>
 						<Route path='/' element={<Dashboard />} />
+						<Route path='/category/:id' element={<Dashboard />} />
 						<Route path='/*' element={<NotFound />} />
 					</Route>
 				</Route	>

@@ -32,7 +32,7 @@ const CategoryCard = ({ category }: { category: ICategory }) => {
 					</div>
 					<div className="flex flex-col flex-1 gap-y-4">
 						<div className="flex flex-col gap-y-2">
-							<a href={`/api/categories/${category.id}`}>
+							<a href={`/category/${category.id}`}>
 								<h5 className="text-lg lg:text-xl font-bold tracking-tight truncate">
 								{category.name}
 								</h5>
@@ -41,7 +41,7 @@ const CategoryCard = ({ category }: { category: ICategory }) => {
 								{category.description || ""}
 							</p>
 						</div>
-						<Button onClick={() => navigator(`/api/categories/${category.id}`)} variant="outline" >View Category</Button>
+						<Button onClick={() => navigator(`/category/${category.id}`)} variant="outline" >View Category</Button>
 					</div>
 				</div>
 			</CardContent>
