@@ -35,3 +35,4 @@ some desciption here
 - improve frontend performance
 - enhance security measures
 - optimize Docker setup for production
+- More abstruction for react components
