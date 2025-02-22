@@ -4,7 +4,7 @@ import { SidebarGroup, SidebarGroupLabel, SidebarMenu, SidebarMenuAction, Sideba
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { EditIcon, MoreHorizontal, PlusIcon, Trash2, ViewIcon } from "lucide-react"
 import { DropdownMenu, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger, DropdownMenuContent } from "@/components/ui/dropdown-menu"
-import { AddCategory, /*DeleteCategory, EditCategory */} from "./category"
+import { AddCategory, DeleteCategory, /* EditCategory */} from "./category"
 import { Collapsible } from "@/components/ui/collapsible"
 
 export const NavCategories = ({ categories }: { categories: ICategory[] }) => {
@@ -104,10 +104,10 @@ export const NavCategories = ({ categories }: { categories: ICategory[] }) => {
 				</SidebarMenu>
 			</SidebarGroup>
 			<AddCategory isOpen={isAddDialogOpen} onOpenChange={handleOpen} />
-			{/* {selectedCategoryId.current &&
+			{selectedCategoryId.current &&
 				<DeleteCategory isOpen={isDeletDialogOpen}
 					onOpenChange={setIsDeleteDialogOpen} id={selectedCategoryId.current} />}
-			{selectedCategory.current &&
+			{/* {selectedCategory.current &&
 				<EditCategory isOpen={isEditDialogOpen}
 					category={selectedCategory.current} onOpenChange={setIsEditDialogOpen} />} */}
 		</Fragment>
