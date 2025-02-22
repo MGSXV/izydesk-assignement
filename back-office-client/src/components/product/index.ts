@@ -1,2 +1,5 @@
 export * from './product-card'
 export * from './add-product'
+export * from './product-view'
+export * from './delete-product'
+export * from './edit-product'
