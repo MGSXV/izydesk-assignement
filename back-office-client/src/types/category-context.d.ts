@@ -2,10 +2,7 @@ export interface ICategory {
 	id: string,
 	name: string,
 	description?: string,
-	image_url?: string,
-	parentCategoryId: string | null,
-	childCategories: ICategory[],
-	created_by_id: string,
+	avatar?: string,
 }
 
 export type TCategoryContext = {
