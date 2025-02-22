@@ -29,3 +29,9 @@ some desciption here
 ### How to view database
 
 ## Areas of improvement
+- better backend input validation
+- pagination to optimize the requests
+- better error handling and logging
+- improve frontend performance
+- enhance security measures
+- optimize Docker setup for production
