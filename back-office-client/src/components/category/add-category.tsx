@@ -21,14 +21,14 @@ export const AddCategory = ({ isOpen, onOpenChange }:
 
 	const onSubmit = async (data: ICategoryInfo) => {
 		setIsLoading(true)
-		const formData = new FormData()
-		formData.append("name", data.name)
-		if (data.description) formData.append('description', data.description);
-		// const fileInput = (data.picture as unknown as FileList)?.[0];
-		// if (data.picture) formData.append('avatar', fileInput);
-		axios_private.post("/api/categories", formData, {
+		const jsonData = {
+			name: data.name,
+			description: data.description,
+			// picture: data.picture,
+		}
+		axios_private.post("/api/categories", jsonData, {
 			headers: {
-				"Content-Type": "multipart/form-data"
+				"Content-Type": "application/json"
 			}, withCredentials: true
 		}).then((response: any) => {
 			if (response && response.data && response.data.category && response.status && response.status === 201) {
