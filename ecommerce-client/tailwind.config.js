@@ -1,7 +1,7 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
 	darkMode: ["class"],
-	content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}"],
+	content: ["app/**/*.{ts,tsx}", "components/**/*.{ts,tsx}", "src/**/*.{ts,tsx,js,jsx,html}"],
 	theme: {
 		extend: {
 			colors: {
@@ -47,5 +47,5 @@ module.exports = {
 		},
 	},
 	plugins: [require("tailwindcss-animate")],
-	}
+}
 	
