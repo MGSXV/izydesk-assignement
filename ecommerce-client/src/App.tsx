@@ -1,9 +1,18 @@
+import { Route, Routes } from 'react-router-dom'
 import './App.css'
+import { Layout, NotFound } from '@/components/common'
+import Home from '@/components/home/home'
 
 function App() {
 
 	return (
-		<div className='bg-red-500'>testing</div>
+		<Routes>
+			<Route element={<Layout />}>
+				<Route path='/' element={<Home />} />
+				<Route path='/category/:id' element={<Layout />} />
+				<Route path='/*' element={<NotFound />} />
+			</Route>
+		</Routes>
 	)
 }
 
