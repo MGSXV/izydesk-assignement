@@ -10,6 +10,7 @@ import { Menu } from "lucide-react";
 import logMax from "@/assets/logo-max.svg";
 import { ModeToggle } from "@/components/mode-toggle";
 import { GitHubLogoIcon } from "@radix-ui/react-icons";
+import CartSheet from "@/components/cart/cart-sheet";
 
 export default function Navbar() {
 	return (
@@ -25,13 +26,14 @@ export default function Navbar() {
 					</NavbarLeft>
 					<NavbarRight>
 
-						<div className="hidden md:flex gap-2">
+						<div className="hidden md:flex gap-2 mr-3">
 							<a rel="noreferrer noopener" href="https://github.com/MGSXV" target="_blank"
 								className={`border ${buttonVariants({ variant: "secondary" })}`} >
 								<GitHubLogoIcon className="mr-2 w-5 h-5" />
 								Github
 							</a>
 							<ModeToggle />
+							<CartSheet />
 						</div>
 						<Sheet>
 							<SheetTrigger asChild>
@@ -46,10 +48,13 @@ export default function Navbar() {
 							</SheetTrigger>
 							<SheetContent side="right">
 								<nav className="grid gap-6 text-lg font-medium">
-									<a href="/"
+									<span
 										className="flex items-center gap-2 text-xl font-bold">
 										<span>IZDYDESK</span>
-									</a>
+										<span>
+											<CartSheet />
+										</span>
+									</span>
 									<a href="/" 
 										className="text-muted-foreground hover:text-foreground">
 										Home

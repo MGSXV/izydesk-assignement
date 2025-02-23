@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { getRandomFloat, getRandomInt } from "@/lib/utils";
 import { IProduct } from "@/types";
 import { useRef } from "react";
+import AddToCartForm from "@/components/cart/add-to-cart-form";
 
 const IMAGE_URL =
 	"https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg";
@@ -55,9 +56,7 @@ function FeaturedProduct({product}: {product: IProduct}) {
 				<PriceFormat prefix="$" value={product.price} className="text-4xl font-semibold" />
 
 				<div className="flex flex-row flex-wrap gap-4">
-					<Button variant="outline" size="lg" className="w-full md:w-fit">
-						Add to cart
-					</Button>
+					<AddToCartForm product={product} />
 					<Button size="lg" className="w-full md:w-fit">
 						Buy now
 					</Button>

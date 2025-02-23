@@ -7,6 +7,7 @@ import imag2 from "@/assets/gold-zipper-on-black-fashion-backpack.jpg"
 import imag3 from "@/assets/modern-time-pieces.jpg"
 import imag4 from "@/assets/wood-leather-watches.jpg"
 import { getRandomInt } from "@/lib/utils";
+import AddToCartForm from "@/components/cart/add-to-cart-form";
 
 function ProductCard({ product }: { product: IProduct}) {
 
@@ -27,6 +28,7 @@ function ProductCard({ product }: { product: IProduct}) {
 			</a>
 
 			<div className="flex flex-row gap-4">
+				<AddToCartForm product={product} />
 				<Button variant="outline">Add to cart</Button>
 				<Button>Buy now</Button>
 			</div>
