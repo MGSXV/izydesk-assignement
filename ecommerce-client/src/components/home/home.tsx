@@ -1,7 +1,11 @@
+import { FeaturedSection, HeroSection } from "@/components/sections"
+
 const Home = () => {
+
 	return (
-		<div>
-			<h1>Home</h1>
+		<div className="w-full max-w-7xl mx-auto py-6">
+			<HeroSection />
+			<FeaturedSection />
 		</div>
 	)
 }
