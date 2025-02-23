@@ -1,6 +1,7 @@
 import {
 	Sheet,
 	SheetContent,
+	SheetFooter,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
@@ -45,7 +46,7 @@ export default function CartSheet() {
 				</SheetHeader>
 				<Separator />
 				{itemCount > 0 && (
-					<div className="flex flex-1 flex-col gap-5 overflow-hidden">
+					<div className="flex flex-col gap-5 overflow-hidden">
 						<ScrollArea className="h-full">
 							<div className="flex flex-col gap-5 pr-6">
 								{cartItems.map((item) => (
@@ -57,6 +58,10 @@ export default function CartSheet() {
 						</ScrollArea>
 					</div>
 				)}
+				{itemCount !== 0 && (<Separator />)}
+				<Button variant="default" size="lg" className="w-full" disabled={itemCount === 0}>
+					Checkout
+				</Button>
 			</SheetContent>
 		</Sheet>
 	);
