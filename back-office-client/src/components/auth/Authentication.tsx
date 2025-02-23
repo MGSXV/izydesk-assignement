@@ -1,13 +1,19 @@
-import { useToast } from "@/hooks";
+import { useAuth, useToast } from "@/hooks";
 import { useState } from "react";
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import Login from "./Login";
 import Signup from "./Signup";
+import { Navigate } from "react-router-dom";
 
 const Authentication = () => {
 
 	const [tab, setTab] = useState("login");
 	const { toast } = useToast();
+	const { user } = useAuth();
+
+	if (user) {
+		return <Navigate to="/" />
+	}
 
 	const tabChange = () => setTab(tab === "login" ? "signup" : "login")
 

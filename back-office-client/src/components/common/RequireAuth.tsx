@@ -13,11 +13,11 @@ const RequireAuth = () => {
 			setIsLoading(false)
 		}
 	}, [user])
-	if (isLoading) {
-		return <div>Loading..</div>
-	}
 	if (!user && location.pathname !== '/auth') {
 		return <Navigate to="/auth" />
+	}
+	if (isLoading) {
+		return <div>Loading..</div>
 	}
 	return (
 		user ? <Outlet /> : <Navigate to="/auth" />
