@@ -6,6 +6,7 @@ import imag2 from "@/assets/gold-zipper-on-black-fashion-backpack.jpg"
 import imag3 from "@/assets/modern-time-pieces.jpg"
 import imag4 from "@/assets/wood-leather-watches.jpg"
 import { getRandomInt } from "@/lib/utils";
+import { useCategory } from "@/context";
 
 interface CartItemProps {
 	item: ICartItem;
@@ -14,6 +15,8 @@ interface CartItemProps {
 export function CartItem({ item }: CartItemProps) {
 	const images = [imag1, imag2, imag3, imag4, "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg"];
 	const randomImage = images[getRandomInt(0, images.length - 1)];
+	const { categories } = useCategory();
+
 	return (
 		<div className="flex items-center space-x-4">
 			<div className="relative h-16 w-16 overflow-hidden rounded">
@@ -33,7 +36,9 @@ export function CartItem({ item }: CartItemProps) {
 					<PriceFormat value={item.product.price * item.quantity} />
 				</span>
 				<span className="line-clamp-1 text-xs capitalize text-muted-foreground">
-					{item.product.category}
+					{
+						categories.find((category) => category.id === (item.product.category as unknown as string))?.name
+					}
 				</span>
 			</div>
 			<CartItemActions item={item} />
