@@ -27,6 +27,11 @@ export default function Navigation() {
 					<NavigationMenuTrigger>Categories</NavigationMenuTrigger>
 					<NavigationMenuContent>
 						<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
+							{categories.length === 0 && (
+								<p className="text-center text-lg text-muted-foreground">
+									{`Our IT depatement are so lazy, they forgot to fill database :)`}
+								</p>
+							)}
 							{categories.map((category) => (
 								<ListItem key={category.id} title={category.name}
 									href={`/categories/${category.id}`}>
