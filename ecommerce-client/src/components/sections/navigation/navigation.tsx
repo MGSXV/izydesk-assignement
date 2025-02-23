@@ -1,5 +1,3 @@
-"use client";
-
 import * as React from "react";
 import { cn } from "@/lib/utils";
 import {
@@ -11,40 +9,12 @@ import {
 	NavigationMenuTrigger,
 	navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
-const categories: { title: string; href: string; description: string }[] = [
-	{
-		title: "Electronics",
-		href: "/categories/electronics",
-		description: "Latest gadgets and devices including smartphones, laptops, and more.",
-	},
-	{
-		title: "Fashion",
-		href: "/categories/fashion",
-		description: "Trendy clothing and accessories for men, women, and children.",
-	},
-	{
-		title: "Home & Kitchen",
-		href: "/categories/home-kitchen",
-		description: "Essentials and decor for your home and kitchen.",
-	},
-	{
-		title: "Beauty & Personal Care",
-		href: "/categories/beauty-personal-care",
-		description: "Skincare, haircare, and other personal care products.",
-	},
-	{
-		title: "Sports & Outdoors",
-		href: "/categories/sports-outdoors",
-		description: "Gear and equipment for sports and outdoor activities.",
-	},
-	{
-		title: "Toys & Games",
-		href: "/categories/toys-games",
-		description: "Fun and educational toys and games for kids of all ages.",
-	},
-];
+import { useCategory } from "@/context";
 
 export default function Navigation() {
+
+	const { categories } = useCategory()
+
 	return (
 		<NavigationMenu className="hidden md:flex">
 			<NavigationMenuList>
@@ -58,11 +28,8 @@ export default function Navigation() {
 					<NavigationMenuContent>
 						<ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px]">
 							{categories.map((category) => (
-								<ListItem
-									key={category.title}
-									title={category.title}
-									href="/"
-								>
+								<ListItem key={category.id} title={category.name}
+									href={`/categories/${category.id}`}>
 									{category.description}
 								</ListItem>
 							))}
