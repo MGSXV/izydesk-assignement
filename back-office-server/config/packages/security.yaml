@@ -4,6 +4,10 @@ security:
   access_control:
     - { path: ^/api/auth/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
     - { path: ^/api/auth/register, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+    - { path: ^/api/categories$, methods: [GET], roles: PUBLIC_ACCESS }
+    - { path: ^/api/categories/.+$, methods: [GET], roles: PUBLIC_ACCESS }
+    - { path: ^/api/products$, methods: [GET], roles: PUBLIC_ACCESS }
+    - { path: ^/api/products/.+$, methods: [GET], roles: PUBLIC_ACCESS }
     - { path: ^/api/, roles: IS_AUTHENTICATED_FULLY }
 
   # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
