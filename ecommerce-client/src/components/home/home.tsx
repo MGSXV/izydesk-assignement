@@ -1,4 +1,4 @@
-import { FeaturedSection, HeroSection, ProductsSection } from "@/components/sections"
+import { CategoriesSection, FeaturedSection, HeroSection, ProductsSection } from "@/components/sections"
 
 const Home = () => {
 
@@ -7,6 +7,7 @@ const Home = () => {
 			<HeroSection />
 			<FeaturedSection />
 			<ProductsSection />
+			<CategoriesSection />
 		</div>
 	)
 }
