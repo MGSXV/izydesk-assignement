@@ -46,29 +46,20 @@ export default function Navbar() {
 							</SheetTrigger>
 							<SheetContent side="right">
 								<nav className="grid gap-6 text-lg font-medium">
-									<a
-										href="/"
-										className="flex items-center gap-2 text-xl font-bold"
-									>
-										<span>Launch UI</span>
+									<a href="/"
+										className="flex items-center gap-2 text-xl font-bold">
+										<span>IZDYDESK</span>
 									</a>
-									<a
-										href="/"
-										className="text-muted-foreground hover:text-foreground"
-									>
-										Getting Started
+									<a href="/" 
+										className="text-muted-foreground hover:text-foreground">
+										Home
 									</a>
-									<a
-										href="/"
-										className="text-muted-foreground hover:text-foreground"
-									>
-										Components
+									<a href="/categories" 
+										className="text-muted-foreground hover:text-foreground">
+										Categories
 									</a>
-									<a
-										href="/"
-										className="text-muted-foreground hover:text-foreground"
-									>
-										Documentation
+									<a href="#" className="text-muted-foreground hover:text-foreground">
+										Some other page
 									</a>
 								</nav>
 							</SheetContent>
