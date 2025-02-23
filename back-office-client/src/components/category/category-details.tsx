@@ -54,8 +54,6 @@ export const ProductsCards = () => {
 		const category = categories.find((category) => category.id == categoryId)
 		if (category) {
 			setCurrentCategory(category.name)
-		} else {
-			console.warn(`Category with id ${categoryId} not found`)
 		}
 	}, [location.pathname, categories])
 
