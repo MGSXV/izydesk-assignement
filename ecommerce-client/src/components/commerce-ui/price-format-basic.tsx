@@ -11,7 +11,7 @@ interface PriceFormat_BasicProps extends React.HTMLAttributes<HTMLDivElement> {
   decimalScale?: number;
 }
 
-const PriceFormat_Basic: React.FC<PriceFormat_BasicProps> = ({
+const PriceFormat: React.FC<PriceFormat_BasicProps> = ({
   className,
   decimalScale = 2,
   decimalSeparator = ",",
@@ -32,4 +32,4 @@ const PriceFormat_Basic: React.FC<PriceFormat_BasicProps> = ({
   );
 };
 
-export default PriceFormat_Basic;
+export default PriceFormat;
