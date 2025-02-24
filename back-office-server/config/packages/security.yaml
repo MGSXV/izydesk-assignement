@@ -8,6 +8,7 @@ security:
     - { path: ^/api/categories/.+$, methods: [GET], roles: PUBLIC_ACCESS }
     - { path: ^/api/products$, methods: [GET], roles: PUBLIC_ACCESS }
     - { path: ^/api/products/.+$, methods: [GET], roles: PUBLIC_ACCESS }
+    - { path: ^/api/order/create-payment$, methods:[POST], roles: PUBLIC_ACCESS}
     - { path: ^/api/, roles: IS_AUTHENTICATED_FULLY }
 
   # https://symfony.com/doc/current/security.html#registering-the-user-hashing-passwords
@@ -38,7 +39,7 @@ security:
         success_handler: lexik_jwt_authentication.handler.authentication_success
         failure_handler: lexik_jwt_authentication.handler.authentication_failure
     api:
-      pattern: ^/api/(?!auth/register)
+      pattern: ^/api/(?!auth/register$)(?!order/create-payment$)
       stateless: true
       jwt: ~
     main:

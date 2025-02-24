@@ -31,7 +31,9 @@ function ProductCard({ product }: { product: IProduct}) {
 
 			<div className="flex flex-row gap-4">
 				<AddToCartForm product={product} />
-				<Button>Buy now</Button>
+				<Button onClick={() => navigate(`payment-form`, {
+					state: { products: [product] }
+				})}>Buy now</Button>
 			</div>
 		</div>
 	);
