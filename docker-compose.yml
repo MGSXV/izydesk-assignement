@@ -1,33 +1,33 @@
 version: '3.8'
 services:
-  back-office-client:
-    build:
-      context: ./back-office-client
-      dockerfile: Dockerfile
-    container_name: back-office-client-container
-    ports:
-      - "3000:3000"
-    volumes:
-      - ./back-office-client:/app:rw
-      - ./back-office-client/node_modules:/app/node_modules
-    depends_on:
-      - php
-    networks:
-      - symfony_network
-  ecommerce-client:
-    build:
-      context: ./ecommerce-client
-      dockerfile: Dockerfile
-    container_name: ecommerce-client-container
-    ports:
-      - "3002:3002"
-    volumes:
-      - ./ecommerce-client:/app:rw
-      - ./ecommerce-client/node_modules:/app/node_modules
-    depends_on:
-      - php
-    networks:
-      - symfony_network
+  # back-office-client:
+  #   build:
+  #     context: ./back-office-client
+  #     dockerfile: Dockerfile
+  #   container_name: back-office-client-container
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - ./back-office-client:/app:rw
+  #     - ./back-office-client/node_modules:/app/node_modules
+  #   depends_on:
+  #     - php
+  #   networks:
+  #     - symfony_network
+  # ecommerce-client:
+  #   build:
+  #     context: ./ecommerce-client
+  #     dockerfile: Dockerfile
+  #   container_name: ecommerce-client-container
+  #   ports:
+  #     - "3002:3002"
+  #   volumes:
+  #     - ./ecommerce-client:/app:rw
+  #     - ./ecommerce-client/node_modules:/app/node_modules
+  #   depends_on:
+  #     - php
+  #   networks:
+  #     - symfony_network
   php:
     build:
       context: ./back-office-server
@@ -60,7 +60,7 @@ services:
 
   database:
     image: postgres:${POSTGRES_VERSION}-alpine
-    container_name: izydesk-database
+    container_name: izydesk-database-22
     env_file:
       - .env
     environment:
