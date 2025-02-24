@@ -1,11 +1,10 @@
 import {
 	Sheet,
 	SheetContent,
-	SheetFooter,
 	SheetHeader,
 	SheetTitle,
 	SheetTrigger,
-} from "../ui/sheet";
+} from "@/components/ui/sheet";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Icons } from "@/components/common/icons";

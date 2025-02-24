@@ -29,7 +29,6 @@ function ProductCard({ product }: { product: IProduct}) {
 
 			<div className="flex flex-row gap-4">
 				<AddToCartForm product={product} />
-				<Button variant="outline">Add to cart</Button>
 				<Button>Buy now</Button>
 			</div>
 		</div>
