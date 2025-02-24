@@ -8,15 +8,17 @@ import imag3 from "@/assets/modern-time-pieces.jpg"
 import imag4 from "@/assets/wood-leather-watches.jpg"
 import { getRandomInt } from "@/lib/utils";
 import AddToCartForm from "@/components/cart/add-to-cart-form";
+import { useNavigate } from "react-router-dom";
 
 function ProductCard({ product }: { product: IProduct}) {
 
 	const images = [imag1, imag2, imag3, imag4, "https://raw.githubusercontent.com/stackzero-labs/ui/refs/heads/main/public/placeholders/headphone-1.jpg"];
 	const randomImage = images[getRandomInt(0, images.length - 1)];
+	const navigate = useNavigate();
 
 	return (
 		<div className="flex w-xs flex-col gap-4 rounded-lg border p-2">
-			<a href={`/product/${product.id}`}>
+			<span onClick={() => navigate(`/product/${product.id}`)} className="cursor-pointer">
 				<div className="relative w-full">
 					<ImageViewer imageUrl={product.avatar || randomImage} />
 				</div>
@@ -25,7 +27,7 @@ function ProductCard({ product }: { product: IProduct}) {
 					<p className="text-muted-foreground text-sm">Shipped in 2-3 days</p>
 				</div>
 				<PriceFormat prefix="$" value={product.price} className="text-2xl font-semibold"/>
-			</a>
+			</span>
 
 			<div className="flex flex-row gap-4">
 				<AddToCartForm product={product} />
