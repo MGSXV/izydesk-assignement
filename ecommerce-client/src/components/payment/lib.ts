@@ -17,8 +17,7 @@ export const handlePayment = async ({ name, email, address, products }: {
         
         const { clientSecret, orderId } = await createResponse.data;
 
-        // 2. Confirm payment with Stripe
-        const stripe = await loadStripe('your_publishable_key');
+        const stripe = await loadStripe('secretkey');
 		if (!stripe) {
 			throw new Error('Failed to load Stripe');
 		}
