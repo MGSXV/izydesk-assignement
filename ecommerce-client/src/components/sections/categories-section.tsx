@@ -16,7 +16,7 @@ const CategoriesSection = () => {
 						{`Ops, maybe someone forgot to add products to Database :)`}
 					</p>
 				)}
-				{categories.slice(0, 12).map((category) => (
+				{categories.slice(0, 6).map((category) => (
 					<CategoryCard key={category.id} category={category} />
 				))}
 			</div>
